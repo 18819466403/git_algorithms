@@ -1,8 +1,8 @@
 ﻿  main.cpp
-c:\users\navygold\documents\visual studio 2015\projects\git_algorithms\algrithoms\main.cpp(1): warning C4068: 未知的杂注
-c:\users\navygold\documents\visual studio 2015\projects\git_algorithms\algrithoms\algoritm.h(65): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\navygold\documents\visual studio 2015\projects\git_algorithms\algrithoms\algoritm.h(75): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\navygold\documents\visual studio 2015\projects\git_algorithms\algrithoms\algoritm.h(81): warning C4018: “<”: 有符号/无符号不匹配
-c:\users\navygold\documents\visual studio 2015\projects\git_algorithms\algrithoms\algoritm.h(109): warning C4018: “<”: 有符号/无符号不匹配
-  algrithoms.vcxproj -> C:\Users\NavyGold\Documents\Visual Studio 2015\Projects\git_algorithms\Debug\algrithoms.exe
-  algrithoms.vcxproj -> C:\Users\NavyGold\Documents\Visual Studio 2015\Projects\git_algorithms\Debug\algrithoms.pdb (Full PDB)
+c:\users\youna\documents\visual studio 2015\projects\git_algorithms\algrithoms\main.cpp(1): warning C4068: 未知的杂注
+c:\users\youna\documents\visual studio 2015\projects\git_algorithms\algrithoms\algoritm.h(65): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\youna\documents\visual studio 2015\projects\git_algorithms\algrithoms\algoritm.h(75): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\youna\documents\visual studio 2015\projects\git_algorithms\algrithoms\algoritm.h(81): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\youna\documents\visual studio 2015\projects\git_algorithms\algrithoms\algoritm.h(109): warning C4018: “<”: 有符号/无符号不匹配
+  algrithoms.vcxproj -> C:\Users\YOUNA\Documents\Visual Studio 2015\Projects\git_algorithms\Debug\algrithoms.exe
+  algrithoms.vcxproj -> C:\Users\YOUNA\Documents\Visual Studio 2015\Projects\git_algorithms\Debug\algrithoms.pdb (Full PDB)

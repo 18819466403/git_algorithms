@@ -28,6 +28,8 @@ void show_mat(T** &mat, const size_t rows, const size_t cols) {
 }
 
 int main() {
+
+	//primÀ„∑®
 	//int vec[36] = { 0,6,1,5,0,0,
 	//		  	    6,0,5,0,3,0,
 	//			    1,5,0,5,6,4,
@@ -49,10 +51,20 @@ int main() {
 	//	std::cout << result[i] << " ";
 	//}
 
-	int vec[14] = { 2,5,3,6,1,7,8,2,4,23,65,4,3 ,0};
+
+	//quicksortÀ„∑®
+	/*int vec[14] = { 2,5,3,6,1,7,8,2,4,23,65,4,3 ,0};
 	for(int i =0;i<14;i++)
 	std::cout << vec[i] << " ";
 	std::cout << std::endl;
-	quick_sort<int>(vec, 14, 0, 13);
+	quick_sort<int>(vec, 14, 0, 13);*/
+
+	//mergesortÀ„∑®
+	/*int vec[14] = { 2,5,3,6,1,7,8,2,4,23,65,4,3 ,0 };
+	merge_sort(vec, 14);
+	for (int i = 0; i<14; i++)
+		std::cout << vec[i] << " ";*/
+
+
 
 }

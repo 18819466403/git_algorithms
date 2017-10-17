@@ -1,6 +1,6 @@
 #pragma once
 #include<vector>
-
+#define SWAP(a,b){a = a^b; b = a^b; a = a^b;}
 template<typename T>
 void set_mat(T ** &mat, size_t rows, size_t cols) {
 	mat = new T*[rows];
@@ -127,12 +127,19 @@ void prim(int **& mat, std::vector<int> &result ,int row,int col) {
 	prim(mat, result,row,col);
 }
 
-template<typename T>
-void swap(T* vec, size_t i, size_t j) {
-	T temp = vec[i];
-	vec[i] = vec[j];
-	vec[j] = temp;
-}
+//template<typename T>
+//void swap(T* &vec, size_t i, size_t j) {
+//	T temp = vec[i];
+//	vec[i] = vec[j];
+//	vec[j] = temp;
+//}
+//
+//template<typename T>
+//void swap(T i, T j) {
+//	T temp = i;
+//	i = j;
+//	j = temp;
+//}
 
 template<typename T>
 void quick_sort(T * vec, size_t n, size_t i, size_t j) {
@@ -147,21 +154,61 @@ void quick_sort(T * vec, size_t n, size_t i, size_t j) {
 		
 		if (i != j) {
 			std::cout << i << "<->" << j << std::endl;
-			swap(vec, i, j);
+			SWAP(vec[i], vec[j]);
 			for (size_t k = 0; k < n; k++)
 				std::cout << vec[k] << " ";
 			std::cout << std::endl;
 		}
-		
 	}
 	std::cout << temp << "<->" << j << std::endl;
-	swap(vec, temp, j);
+	//swap(vec, temp, j);
+	SWAP(vec[temp], vec[j]);
 	for (size_t k = 0; k < n; k++)
 		std::cout << vec[k] << " ";
 	std::cout << std::endl;
 	std::cout << std::endl;
 	quick_sort(vec, n, temp, i);
 	quick_sort(vec, n, j+1, index);
+}
 
+
+template<typename T>
+void divise(T *& vec , int l, int r, T *& result) {
+	if (l < r)
+
+	{	
+		int mid = (l + r) / 2;		
+		divise(vec, l, mid, result);
+		divise(vec, mid + 1, r, result);	
+		merge(vec, l, mid, r, result);
+	}
+	else
+		return;
+}
+
+template<typename T>
+void merge(T *& vec, int l,int mid, int r, T *& result) {
+	int m = l;
+	int n = mid + 1;
+	int temp = l;
+	while (m <= mid && n <= r) {
+		if (vec[m] < vec[n])
+			result[temp++] = vec[m++];
+		else
+			result[temp++] = vec[n++];
+	}
+	while (m <= mid)
+		result[temp++] = vec[m++];
+	while (n <= r)
+		result[temp++] = vec[n++];
+	temp = l;
+	while (l <= r)
+		vec[l++] = result[temp++];
+}
+
+template<typename T>
+void merge_sort(T * vec, int n) {
+	T * result = new T[n];
+	divise(vec, 0, n-1, result);
 }
 
