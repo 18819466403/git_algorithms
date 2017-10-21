@@ -1,9 +1,10 @@
 #pragma ocne
 #include<iostream>
 #include"algoritm.h"
-
+#include<time.h>
+#include<ctime>
 template<typename T>
-void show_vec(const T* vec,const size_t rows,const size_t cols) {
+void show_vec(const T* vec, const size_t rows, const size_t cols) {
 	int k = 0;
 	for (int i = 0; i < rows; i++)
 	{
@@ -53,11 +54,13 @@ int main() {
 
 
 	//quicksortÀ„∑®
-	/*int vec[14] = { 2,5,3,6,1,7,8,2,4,23,65,4,3 ,0};
+
+	/*int vec[14] = { 2,5,3,6,1,7,8,2,4,23,65,4,3 ,0 };
 	for(int i =0;i<14;i++)
 	std::cout << vec[i] << " ";
 	std::cout << std::endl;
-	quick_sort<int>(vec, 14, 0, 13);*/
+	quick_sort(vec, 14, 0, 13);*/
+
 
 	//mergesortÀ„∑®
 	/*int vec[14] = { 2,5,3,6,1,7,8,2,4,23,65,4,3 ,0 };
@@ -65,6 +68,36 @@ int main() {
 	for (int i = 0; i<14; i++)
 		std::cout << vec[i] << " ";*/
 
+		//point quicksortÀ„∑®
 
+	/*std::vector<s_point<int>> vec;
+	int j = 10;
+	for(int i = 10; i > 0; i--){
+		s_point<int> point(i,j++);
+		vec.push_back(point);
+     }
+
+	quick_sort(vec, 10, 0, 9);*/
+
+
+	// test three swap functions;
+	//int n = 0;
+	//clock_t start, finish;
+	//start = clock();
+	//int a = 1;
+	//int b = 1;
+	//int c = 1;
+	//while (n < 1000000000)
+	//{
+	//	n++;
+	//	//a = a^b; b = a^b; a = a^b;
+	//	a = a + b;
+	//	b = a - b;
+	//	a = a - b;
+ //    		
+	//}
+	//finish = clock();
+	//std::cout << (finish - start) / CLOCKS_PER_SEC << std::endl;
+	
 
 }

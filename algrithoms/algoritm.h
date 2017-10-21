@@ -1,6 +1,18 @@
 #pragma once
 #include<vector>
 #define SWAP(a,b){a = a^b; b = a^b; a = a^b;}
+
+template<typename T>
+struct s_point {
+	T m_x;
+	T m_y;
+	s_point(T x, T y) :m_x(x), m_y(y) {};
+};
+template<typename T>
+void swap(T a, T b) {
+	a = a^b; b = a^b; a = a^b;
+}
+
 template<typename T>
 void set_mat(T ** &mat, size_t rows, size_t cols) {
 	mat = new T*[rows];
@@ -160,15 +172,54 @@ void quick_sort(T * vec, size_t n, size_t i, size_t j) {
 			std::cout << std::endl;
 		}
 	}
-	std::cout << temp << "<->" << j << std::endl;
-	//swap(vec, temp, j);
-	SWAP(vec[temp], vec[j]);
+	if (temp != j)
+	{
+		std::cout << temp << "<->" << j << std::endl;
+		//swap(vec, temp, j);
+		SWAP(vec[temp], vec[j]);
+	}
 	for (size_t k = 0; k < n; k++)
 		std::cout << vec[k] << " ";
 	std::cout << std::endl;
 	std::cout << std::endl;
 	quick_sort(vec, n, temp, i);
 	quick_sort(vec, n, j+1, index);
+}
+
+
+template<typename T>
+void quick_sort(std::vector<s_point<T>> &vec, size_t n, size_t i, size_t j) {
+	size_t temp = i;
+	size_t index = j;
+	std::cout << i << "------" << j << std::endl;
+	T ref = vec[temp].m_x;
+	if (i >= j) return;
+	while (i < j) {
+		while (i<j && vec[j].m_x >= ref) j--;
+		while (i<j && vec[i].m_x < ref) i++;
+
+		if (i != j) {
+			std::cout << i << "<->" << j << std::endl;
+			SWAP(vec[i].m_x, vec[j].m_x);
+			SWAP(vec[i].m_y, vec[j].m_y);
+			for (size_t k = 0; k < n; k++)
+				std::cout << vec[k].m_x << " ";
+			std::cout << std::endl;
+		}
+	}
+	if (temp != j)
+	{
+		std::cout << temp << "<->" << j << std::endl;
+		//swap(vec, temp, j);
+		SWAP(vec[temp].m_x, vec[j].m_x);
+		SWAP(vec[temp].m_y, vec[j].m_y);
+	}
+	for (size_t k = 0; k < n; k++)
+		std::cout << vec[k].m_x << " ";
+	std::cout << std::endl;
+	std::cout << std::endl;
+	quick_sort(vec, n, temp, i);
+	quick_sort(vec, n, j + 1, index);
 }
 
 
@@ -212,3 +263,15 @@ void merge_sort(T * vec, int n) {
 	divise(vec, 0, n-1, result);
 }
 
+
+template<typename T>
+void divise(std::vector<s_point<T>> &vec, size_t begin, size_t end) {
+
+}
+
+template<typename T>
+void clost_pair(std::vector<s_point<T>> & vec) {
+	size_t size = vec.size();
+
+	divise(vec, 0, size - 1);
+}
