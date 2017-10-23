@@ -2,6 +2,10 @@
 #include<vector>
 #define SWAP(a,b){a = a^b; b = a^b; a = a^b;}
 
+//closet_pair function: two points
+//#define _CLOSET_PAIR_POINT_ONE one;
+//#define _CLOSET_PAIR_POINT_TWO two;
+
 template<typename T>
 struct s_point {
 	T m_x;
@@ -263,15 +267,61 @@ void merge_sort(T * vec, int n) {
 	divise(vec, 0, n-1, result);
 }
 
-
 template<typename T>
-void divise(std::vector<s_point<T>> &vec, size_t begin, size_t end) {
-
+double get_point_distance(s_point<T> p1, s_point<T> p2) {
+	return sqrt((double)(p1.m_x - p2.m_x)*(p1.m_x - p2.m_x) + (p1.m_y - p2.m_y)*(p1.m_y - p2.m_y));
 }
 
 template<typename T>
-void clost_pair(std::vector<s_point<T>> & vec) {
-	size_t size = vec.size();
+double divise(std::vector<s_point<T>> &vec, size_t i, size_t j) {
+	size_t l = i;
+	size_t r = j;
+	std::cout << std::endl;
+	for (size_t m = l; m <= r; m++)
+		std::cout << vec[m].m_x << " ";
+	if (i == j) return 0;
+	if (j == i + 1) return get_point_distance(vec[i], vec[j]);
+	size_t mid = (i + j) / 2;
+	double d1 = divise(vec, l, mid);
+	double d2 = divise(vec, mid + 1, r);
 
-	divise(vec, 0, size - 1);
+	double d;
+	if (d1 >= d2) {
+		d = d2;
+	}
+	else d = d1;
+	if (d1 <= 0.00001) d = d2;
+	if (d2 <= 0.00001) d = d1;
+
+	std::cout << i << "---"<<j << std::endl;
+	
+	size_t l_d;
+	size_t r_d;
+
+	for (int m = mid; m >= (int)(l); m--) {
+		if (d >= abs(vec[m].m_x - vec[mid].m_x)) l_d = m;
+		else break;
+	}
+    
+    for(int n =mid; n<= (int)(r); n++)
+		if (d >= abs(vec[n].m_x - vec[mid].m_x)) r_d = n;
+		else break;
+    
+	for(int i = l_d; i<=(int)(r_d);i++)
+		for (int j = i; j <= (int)(r_d); j++) {
+			if (get_point_distance(vec[i], vec[j]) < d && get_point_distance(vec[i], vec[j]) >0.00001) d = get_point_distance(vec[i], vec[j]);
+		}
+	std::cout << "d:" <<d<< '\n';
+	return d;
+}
+
+template<typename T>
+void closet_pair(std::vector<s_point<T>> & vec) {
+	size_t size = vec.size();
+	std::cout << "sort points:" << '\n';
+	quick_sort(vec, vec.size(), 0, vec.size() - 1);
+	for (size_t m = 0; m < size; m++)
+		std::cout << vec[m].m_x << " ";
+	std::cout << '\n' << "divise:" << '\n';
+	std::cout<<"closet_distance:"<<divise(vec, 0, size - 1)<<'\n';
 }

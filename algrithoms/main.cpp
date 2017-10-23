@@ -100,4 +100,41 @@ int main() {
 	//std::cout << (finish - start) / CLOCKS_PER_SEC << std::endl;
 	
 
+	//closet_pair funtion
+	//std::vector<s_point<int>> vec;
+	//s_point<int> p1(23, 12);
+	//s_point<int> p2(21, 34);
+	//s_point<int> p3(4, 12);
+	//s_point<int> p4(12, 2);
+	//s_point<int> p5(-2, 89);
+	//s_point<int> p6(75, 35);
+	//s_point<int> p7(8, 1);
+	//s_point<int> p8(5, 2);
+	//s_point<int> p9(14, 53); 
+	//s_point<int> p10(18, 32);
+
+	//vec.push_back(p1);
+	//vec.push_back(p2);
+	//vec.push_back(p3);
+	//vec.push_back(p4);
+	//vec.push_back(p5); 
+	//vec.push_back(p6);
+	//vec.push_back(p7); 
+	//vec.push_back(p8);
+	//vec.push_back(p9);
+	//vec.push_back(p10);
+	///*int j = 10;
+	//for (int i = 10; i > 0; i--) {
+	//	s_point<int> point(i, j++);
+	//	vec.push_back(point);
+	//}*/
+	//double d=10;
+	//for(int i=0;i<10;i++)
+	//	for (int j = i; j < 10; j++) {
+	//		if (d >= get_point_distance(vec[i], vec[j]) && get_point_distance(vec[i], vec[j]) > 0.00001) d = get_point_distance(vec[i], vec[j]);
+	//	}
+	//std::cout << d << std::endl;
+	//closet_pair(vec);
+
+
 }
