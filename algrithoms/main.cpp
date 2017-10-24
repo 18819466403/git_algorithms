@@ -137,4 +137,18 @@ int main() {
 	//closet_pair(vec);
 
 
+	int vec[36] = { 0,6,1,5,0,0,
+			  	    6,0,5,0,3,0,
+				    1,5,0,5,6,4,
+				    5,0,5,0,0,2,
+				    0,3,6,0,0,6,
+				    0,0,4,2,6,0 };
+	//show_vec<int>(vec,6,6);
+	int **mat = NULL;
+	std::vector<int> result;
+	set_mat<int>(mat, 6, 6);
+	convert_vec_to_mat<int>(vec, mat, 6, 6);
+	deep_first_search(mat, result, 6, 6);
+	  // show_mat<int>(mat, 6, 6);
+
 }

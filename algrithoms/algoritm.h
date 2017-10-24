@@ -324,4 +324,37 @@ void closet_pair(std::vector<s_point<T>> & vec) {
 		std::cout << vec[m].m_x << " ";
 	std::cout << '\n' << "divise:" << '\n';
 	std::cout<<"closet_distance:"<<divise(vec, 0, size - 1)<<'\n';
+	
+}
+
+template<typename T>
+int find(T **& mat, std::vector<int> & result, int row, int column, int current) {
+	int next = 0;
+	for (int i = 0; i < column; i++) {
+		if (mat[current][i] != 0) {
+			next = i;
+			break;
+		}
+	}
+
+	if (0 != next) return next;
+	else
+	{
+		if (current >= 1)
+			find(mat, result, row, column, current - 1);
+		else
+			std::cerr << "There has isolated point!";
+	}
+	
+}
+
+template<typename T>
+void deep_first_search(T **& mat, std::vector<int> & result, int row, int column) {
+	if (0 == result.size()) {
+		result.push_back(0);
+		
+	}
+	if (row == result.size()) return;
+	int next = find(mat, result, row, column, result.size());
+	
 }
