@@ -328,20 +328,30 @@ void closet_pair(std::vector<s_point<T>> & vec) {
 }
 
 template<typename T>
-int find(T **& mat, std::vector<int> & result, int row, int column, int current) {
+bool is_in_vector(std::vector<T> & vec, T element) {
+	for (int i = 0; i < vec.size(); i++) {
+		if (element == vec[i]) {
+			return true;
+			break;
+		}
+	}
+	return false;
+}
+
+template<typename T>
+int deep_first_search_find_next(T **& mat, std::vector<int> & result, int row, int column, int current) {
 	int next = 0;
 	for (int i = 0; i < column; i++) {
-		if (mat[current][i] != 0) {
+		if (mat[current][i] != 0 && !is_in_vector(result,i)) {
 			next = i;
 			break;
 		}
 	}
-
 	if (0 != next) return next;
 	else
 	{
 		if (current >= 1)
-			find(mat, result, row, column, current - 1);
+			deep_first_search_find_next(mat, result, row, column, current - 1);
 		else
 			std::cerr << "There has isolated point!";
 	}
@@ -351,10 +361,49 @@ int find(T **& mat, std::vector<int> & result, int row, int column, int current)
 template<typename T>
 void deep_first_search(T **& mat, std::vector<int> & result, int row, int column) {
 	if (0 == result.size()) {
-		result.push_back(0);
-		
+		result.push_back(0);	
 	}
 	if (row == result.size()) return;
-	int next = find(mat, result, row, column, result.size());
-	
+	int next = deep_first_search_find_next(mat, result, row, column, result[result.size()-1]);
+	std::cout << result[result.size() - 1] << "--->" << next << std::endl;
+	result.push_back(next);
+	std::cout << "result" << std::endl;
+	for (int i = 0; i < result.size(); i++)
+		std::cout << result[i] << " ";
+	deep_first_search(mat, result, 7, 7);
+}
+
+template<typename T>
+int breadth_first_search_find_next(T **& mat, std::vector<int> & result, int row, int column, int current) {
+	int next = 0;
+	for (int i = 0; i < column; i++) {
+		if (mat[current][i] != 0 && is_in_vector(result, i)) {
+			deep_first_search_find_next(mat, result, row, column, i);
+			break;
+		}
+		if (mat[current][i] != 0 && !is_in_vector(result, i)) {
+			next = i;
+			break;
+		}
+	}
+	if (0 != next) return next;
+	else
+	{
+		std::cerr << "There has isolated point!";
+	}
+}
+
+template<typename T>
+void breadth_first_search(T **& mat, std::vector<int> & result, int row, int column) {
+	if (0 == result.size()) {
+		result.push_back(0);
+	}
+	if (row == result.size()) return;
+	int next = breadth_first_search_find_next(mat, result, row, column, result[result.size() - 1]);
+	std::cout << result[result.size() - 1] << "--->" << next << std::endl;
+	result.push_back(next);
+	std::cout << "result" << std::endl;
+	for (int i = 0; i < result.size(); i++)
+		std::cout << result[i] << " ";
+	breadth_first_search(mat, result, 7, 7);
 }
