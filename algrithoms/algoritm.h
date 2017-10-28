@@ -373,25 +373,30 @@ void deep_first_search(T **& mat, std::vector<int> & result, int row, int column
 	deep_first_search(mat, result, 7, 7);
 }
 
-template<typename T>
-int breadth_first_search_find_next(T **& mat, std::vector<int> & result, int row, int column, int current) {
-	int next = 0;
-	for (int i = 0; i < column; i++) {
-		if (mat[current][i] != 0 && is_in_vector(result, i)) {
-			deep_first_search_find_next(mat, result, row, column, i);
-			break;
-		}
-		if (mat[current][i] != 0 && !is_in_vector(result, i)) {
-			next = i;
-			break;
-		}
-	}
-	if (0 != next) return next;
-	else
-	{
-		std::cerr << "There has isolated point!";
-	}
-}
+//template<typename T>
+//int breadth_first_search_find_next(T **& mat, std::vector<int> & result, int row, int column, int current) {
+//	int next = 0;
+//	std::cout  << "current:"<<current << '\n';
+//	for (int i = 0; i < column; i++) {
+//		if (mat[current][i] != 0 && is_in_vector(result, i) && i< current) {
+//			mat[current][i] = 0;
+//			mat[i][current] = 0;
+//			next = breadth_first_search_find_next(mat, result, row, column, i);
+//			break;
+//		}
+//		if (mat[current][i] != 0 && !is_in_vector(result, i)) {
+//			next = i;
+//			break;
+//		}
+//	}
+//	std::cout << "end" << '\n';
+//	if (0 != next) return next;
+//	else
+//	{
+//	
+//		std::cerr << "There has isolated point!";
+//	}
+//}
 
 template<typename T>
 void breadth_first_search(T **& mat, std::vector<int> & result, int row, int column) {
@@ -399,11 +404,17 @@ void breadth_first_search(T **& mat, std::vector<int> & result, int row, int col
 		result.push_back(0);
 	}
 	if (row == result.size()) return;
-	int next = breadth_first_search_find_next(mat, result, row, column, result[result.size() - 1]);
-	std::cout << result[result.size() - 1] << "--->" << next << std::endl;
-	result.push_back(next);
+	//int next = breadth_first_search_find_next(mat, result, row, column, result[result.size() - 1]);
+	for (int i = 0; i < result.size(); i++) {
+		for (int j = 0; j < column; j++) {
+			if (0 != mat[i][j] && !is_in_vector(result, j)) {
+				std::cout << result[i] << "--->" <<j << std::endl;
+				result.push_back(j);
+			}
+		}
+	}
 	std::cout << "result" << std::endl;
 	for (int i = 0; i < result.size(); i++)
 		std::cout << result[i] << " ";
-	breadth_first_search(mat, result, 7, 7);
+	std::cout << std::endl;
 }
