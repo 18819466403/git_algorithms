@@ -418,3 +418,19 @@ void breadth_first_search(T **& mat, std::vector<int> & result, int row, int col
 		std::cout << result[i] << " ";
 	std::cout << std::endl;
 }
+
+size_t russian_peasant_multiplication(size_t n, size_t m, size_t bias =0) {
+	if (1 == n) return m+bias;
+	if (0 == n) return 0;
+	if (0 == n % 2) {
+		n = n / 2;
+		m = m * 2;
+	}
+	else
+	{
+		n = (n - 1) / 2;
+		bias += m;
+		m = 2*m;
+	}
+	russian_peasant_multiplication(n, m, bias);
+}

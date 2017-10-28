@@ -137,19 +137,24 @@ int main() {
 	//closet_pair(vec);
 
 
-	int vec[49] = { 0,1,1,1,0,0,0,
-			  	    1,0,1,1,1,0,0,
-				    1,1,0,0,0,0,1,
-				    1,1,0,0,0,1,0,
-				    0,1,0,0,0,0,0,
-				    0,0,0,1,0,0,1,
-	                0,0,1,0,0,1,0};
-	//show_vec<int>(vec,6,6);
-	int **mat = NULL;
-	std::vector<int> result;
-	set_mat<int>(mat, 7, 7);
-	convert_vec_to_mat<int>(vec, mat, 7, 7);
-	breadth_first_search(mat, result, 7, 7);
+//breadth_first_search algorithm
+	//int vec[49] = { 0,1,1,1,0,0,0,
+	//		  	    1,0,1,1,1,0,0,
+	//			    1,1,0,0,0,0,1,
+	//			    1,1,0,0,0,1,0,
+	//			    0,1,0,0,0,0,0,
+	//			    0,0,0,1,0,0,1,
+	//                0,0,1,0,0,1,0};
+	////show_vec<int>(vec,6,6);
+	//int **mat = NULL;
+	//std::vector<int> result;
+	//set_mat<int>(mat, 7, 7);
+	//convert_vec_to_mat<int>(vec, mat, 7, 7);
+	//breadth_first_search(mat, result, 7, 7);
 	  // show_mat<int>(mat, 6, 6);
 
+//russian peasant multiplication algorithm
+    /*size_t n=300;
+    size_t m=20;
+	std::cout<<russian_peasant_multiplication(n, m);*/
 }
